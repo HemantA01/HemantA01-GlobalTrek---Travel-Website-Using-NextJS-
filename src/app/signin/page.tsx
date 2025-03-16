@@ -42,7 +42,8 @@ const Page = () => {
           {/* Decorative header */}
           <div className="relative h-40">
             <div className="flex flex-col items-center justify-center">
-              <div className="">
+              <Link href="/">
+
                 <Image
                   src={Logo}
                   alt="Logo"
@@ -50,7 +51,7 @@ const Page = () => {
                   height={200}
                   className="object-contain"
                 />
-              </div>
+              </Link>
             </div>
           </div>
 

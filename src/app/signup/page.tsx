@@ -97,6 +97,7 @@ const page = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
       <div className="max-w-xl w-full mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
         <div className="flex justify-center">
+          <Link href="/">
           <Image
             src={Logo}
             alt="Logo"
@@ -104,6 +105,7 @@ const page = () => {
             height={200}
             className="object-contain"
           />
+          </Link>
         </div>
 
         <div className="mt-2 mx-8">
