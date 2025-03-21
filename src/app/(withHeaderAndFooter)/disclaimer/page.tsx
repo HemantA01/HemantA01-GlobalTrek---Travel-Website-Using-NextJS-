@@ -163,7 +163,7 @@ const DisclaimerPage = () => {
                         Introduction
                       </h2>
                       <p className="text-gray-700 mb-4">
-                        The information provided by GlobalTrek ("we," "us," or
+                        The information provided by GlobeTrek ("we," "us," or
                         "our") on our website and related travel services (the
                         "Services") is intended for general informational
                         purposes only. While we strive to keep information
@@ -243,7 +243,7 @@ const DisclaimerPage = () => {
                         Limitation of Liability
                       </h2>
                       <p className="text-gray-700 mb-4">
-                        GlobalTrek shall not be held liable for any direct,
+                        GlobeTrek shall not be held liable for any direct,
                         indirect, or incidental damages resulting from the use
                         of our services. This includes, but is not limited to,
                         delays, lost baggage, missed connections, or unexpected
@@ -277,7 +277,7 @@ const DisclaimerPage = () => {
                       <p className="text-gray-700 mb-4">
                         Our website may contain links to third-party websites
                         for additional travel resources. These links are
-                        provided for your convenience, and GlobalTrek is not
+                        provided for your convenience, and GlobeTrek is not
                         responsible for the content or privacy practices of
                         these external websites.
                       </p>
@@ -290,7 +290,7 @@ const DisclaimerPage = () => {
                         </h3>
                         <p className="text-gray-600">
                           Links provided are for informational purposes only and
-                          do not imply any endorsement by GlobalTrek. We advise
+                          do not imply any endorsement by GlobeTrek. We advise
                           reviewing their privacy policies before providing any
                           personal data.
                         </p>
@@ -327,7 +327,7 @@ const DisclaimerPage = () => {
                         We encourage travelers to verify critical details
                         directly with airlines, hotels, tour operators, or other
                         relevant service providers before making travel
-                        decisions. GlobalTrek is not responsible for
+                        decisions. GlobeTrek is not responsible for
                         discrepancies, missed bookings, or additional costs
                         resulting from outdated or incorrect information.
                       </p>
@@ -367,7 +367,7 @@ const DisclaimerPage = () => {
                         We recommend that users verify travel information
                         directly with airlines, hotels, tour operators, or other
                         relevant service providers before making travel
-                        decisions. GlobalTrek is not responsible for
+                        decisions. GlobeTrek is not responsible for
                         discrepancies, missed bookings, or additional costs
                         resulting from outdated or incorrect information.
                       </p>
@@ -403,7 +403,7 @@ const DisclaimerPage = () => {
                         website frequently for the most up-to-date information.
                       </p>
                       <p className="text-gray-700">
-                        GlobalTrek is committed to providing accurate and
+                        GlobeTrek is committed to providing accurate and
                         up-to-date information, but we cannot guarantee
                         uninterrupted access to our website. We reserve the
                         right to make changes without prior notice.
@@ -424,7 +424,7 @@ const DisclaimerPage = () => {
                       </h2>
                       <p className="text-gray-700 mb-4">
                         If you have any questions or concerns, please reach out
-                        to us at <strong>support@globaltrek.com</strong> or
+                        to us at <strong>support@GlobeTrek.com</strong> or
                         visit our{" "}
                         <Link href="/contact">
                           <strong>Contact Page</strong>

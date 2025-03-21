@@ -7,6 +7,22 @@ body {
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "Losta Masta";
+  src: url("/fonts/lostamasta-light.otf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Moidugk";
+  src: url("/fonts/moidugk.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+
+
 
 ::-webkit-scrollbar {
   width: 8px;

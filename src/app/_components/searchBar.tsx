@@ -3,7 +3,9 @@
 import React, { useState, useRef, useEffect } from "react";
 
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "motion/react";
+
+import { useSearchParams } from "next/navigation";
 
 import { IoIosSearch } from "react-icons/io";
 import { GoPeople } from "react-icons/go";
@@ -19,7 +21,16 @@ import { TiArrowRepeat } from "react-icons/ti";
 import toast from "react-hot-toast";
 
 export default function SearchBar() {
-  const [activeTab, setActiveTab] = useState("Hotels");
+  const searchParams = useSearchParams();
+  const type = searchParams.get("type");
+  const [activeTab, setActiveTab] = useState(type || "Flights");
+
+  useEffect(() => {
+    if (type) {
+      setActiveTab(type);
+    }
+  }, [type]);
+
   const [selectTripOption, setSelectTripOption] = useState(0);
   const [selectHotelOption, setSelectHotelOption] = useState(0);
   const [isGuestsOpen, setIsGuestsOpen] = useState(false);
@@ -44,8 +55,8 @@ export default function SearchBar() {
   const dropdownRef = useRef(null);
 
   const travelOptions = [
-    { id: "Hotels", label: "Hotels", icon: "🏨" },
     { id: "Flights", label: "Flights", icon: "✈️" },
+    { id: "Hotels", label: "Hotels", icon: "🏨" },
     { id: "HomeStays", label: "HomeStays", icon: "🏠" },
     { id: "Cruises", label: "Cruises", icon: "🚢" },
     { id: "Buses", label: "Buses", icon: "🚌" },
@@ -184,6 +195,42 @@ export default function SearchBar() {
     setToDestination(temp);
   };
 
+  const fadeInVariants = {
+    hidden: {
+      filter: "blur(10px)",
+      opacity: 0,
+    },
+    visible: {
+      filter: "blur(0px)",
+      opacity: 1,
+      transition: {
+        duration: 1.2,
+        ease: "easeInOut",
+        staggerChildren: 0.08,
+      },
+    },
+  };
+  const ref = useRef(null);
+
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const boxVariants = {
+    hidden: {
+      opacity: 0,
+      y: 100,
+      filter: "blur(20px)",
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: {
+        duration: 1,
+        ease: "easeInOut",
+      },
+    },
+  };
+
   return (
     <div className="relative w-full h-[95vh]">
       {/* Background Image */}
@@ -196,19 +243,32 @@ export default function SearchBar() {
         <div className="w-full max-w-7xl">
           {/* Headline */}
           <div className="mb-8 text-center">
-            <h1
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={fadeInVariants}
               className="text-[5rem] font-bold text-white mb-4"
               style={{ fontFamily: "var(--font-dancing-script)" }}
             >
               Discover Your Perfect Journey
-            </h1>
-            <p className="text-white/80 text-lg">
+            </motion.div>
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={fadeInVariants}
+              className="text-white/80 text-lg"
+            >
               Find and book your dream destination in minutes
-            </p>
+            </motion.div>
           </div>
 
           {/* Feature Tags */}
-          <div className="my-6 flex flex-wrap justify-center gap-3 z-10">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeInVariants}
+            className="my-6 flex flex-wrap justify-center gap-3 z-10"
+          >
             {[
               "Best Price Guarantee",
               "Free Cancellation",
@@ -222,10 +282,16 @@ export default function SearchBar() {
                 {tag}
               </div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Search Container */}
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-2xl border border-white/20">
+          <motion.div
+            ref={ref}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            variants={boxVariants}
+            className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-2xl border border-white/20"
+          >
             <div className="flex justify-center mb-4 overflow-x-auto scrollbar-hide">
               <div className="inline-flex bg-white/15 rounded-full p-1">
                 {travelOptions.map((option) => (
@@ -337,7 +403,7 @@ export default function SearchBar() {
                               e.target.value >
                               startDate.toISOString().split("T")[0]
                             ) {
-                              setStartDate(new Date(e.target.value));
+                              setEndDate(new Date(e.target.value));
                             }
                           }}
                           className="w-full bg-transparent text-gray-800 placeholder-gray-800/60 text-[1rem] font-medium border-none focus:ring-0 p-0 focus:outline-none"
@@ -843,7 +909,7 @@ export default function SearchBar() {
                 <HiArrowLongRight size={20} />
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

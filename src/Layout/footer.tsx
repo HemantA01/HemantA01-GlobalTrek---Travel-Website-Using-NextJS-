@@ -15,7 +15,7 @@ export default function Footer() {
                         <Link href="/" className="inline-block">
                             <Image
                                 src={Logo}
-                                alt="GlobalTrek Logo"
+                                alt="GlobeTrek Logo"
                                 width={150}
                                 height={150}
                                 className="drop-shadow-sm"
@@ -26,7 +26,7 @@ export default function Footer() {
                     <div className="max-w-md text-center md:text-right">
                         <h2 className="text-4xl font-bold mb-2 text-[#3F4F44]" style={{ fontFamily: "var(--font-dancing-script)" }}>Explore The World With Us</h2>
                         <p className="text-gray-600">
-                            Your journey begins with GlobalTrek - discover breathtaking destinations,
+                            Your journey begins with GlobeTrek - discover breathtaking destinations,
                             find perfect accommodations, and create memories that last a lifetime.
                         </p>
                     </div>
@@ -51,7 +51,7 @@ export default function Footer() {
                             </li>
                             <li className="flex items-center gap-3">
                                 <FaEnvelope className="text-[#3F4F44]" />
-                                <span>hello@globaltrek.com</span>
+                                <span>hello@GlobeTrek.com</span>
                             </li>
                         </ul>
                     </div>
@@ -151,7 +151,7 @@ export default function Footer() {
                     </div>
                     
                     <p className="text-gray-500 text-sm">
-                        &copy; {new Date().getFullYear()} GlobalTrek. All rights reserved.
+                        &copy; {new Date().getFullYear()} GlobeTrek. All rights reserved.
                     </p>
                 </div>
             </div>

@@ -1,11 +1,14 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import SearchBar from "../_components/searchBar";
 import OfferCard from "@/components/offercard";
 import TravelCard from "@/components/travellCard";
 import FeaturedCard from "@/components/featureCard";
 import BlogHomeCard from "../_components/blogHomeCard";
+
+import {motion} from "motion/react";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -35,6 +38,7 @@ export default function Page() {
     pauseOnHover: true,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
+    smoothScroll: true,
     dotsClass: "slick-dots custom-dots",
     responsive: [
       {
@@ -61,16 +65,54 @@ export default function Page() {
     ],
   };
 
+  const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY;
+            const triggerPosition = window.innerHeight * 0.1; 
+            
+            if (scrollPosition > triggerPosition) {
+                setIsVisible(true);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const boxVariants = {
+        hidden: {
+            opacity: 0,
+            y: 100,            
+            filter: "blur(20px)"
+        },
+        visible: {
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)", 
+            transition: {
+                duration: 0.8,
+                ease: "easeOut"
+            }
+        }
+    };
+
   return (
     <>
       <SearchBar />
 
       {/* Offer Cards Section */}
-      <div className="flex flex-wrap justify-center gap-10 mt-[5rem] mb-[5rem] z-10">
+
+      <motion.div
+       variants={boxVariants}
+       initial="hidden"
+       animate={isVisible ? "visible" : "hidden"}
+       className="flex flex-wrap justify-center gap-10 mt-[5rem] mb-[5rem] z-10">
         {[1, 2, 3].map((_, index) => (
           <OfferCard key={index} />
         ))}
-      </div>
+      </motion.div>
 
       {/* Travel Cards Slider Section */}
       <div className="px-[2rem] md:px-[4rem] lg:px-[8rem] mb-[5rem]">
@@ -82,8 +124,8 @@ export default function Page() {
             Explore Indian Destinations
           </h2>
           <div className="flex items-center gap-2">
-            <span className="text-sm text-gray-500">View all destinations</span>
-            <FaChevronRight className="text-gray-500" />
+            <Link href="/tourism?type=domestic" className="text-sm text-gray-500">View all destinations</Link>
+            <FaChevronRight className="text-gray-500" size={12} />
           </div>
         </div>
 
@@ -201,8 +243,8 @@ export default function Page() {
             Explore International Destinations
           </h2>
           <div className="flex items-center gap-2">
-            <span className="text-sm text-gray-500">View all destinations</span>
-            <FaChevronRight className="text-gray-500" />
+            <Link href="/tourism?type=international" className="text-sm text-gray-500">View all destinations</Link>
+            <FaChevronRight className="text-gray-500" size={12} />
           </div>
         </div>
 

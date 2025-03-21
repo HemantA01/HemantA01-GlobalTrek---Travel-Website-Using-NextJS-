@@ -78,8 +78,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
           className="flex-1 px-2 py-1 text-sm focus:outline-none"
         />
 
-        {/* Send OTP Button */}
-        {otpSent === false && (
+        
           <div className="absolute inset-y-0 right-0 flex items-center">
             <button
               type="button"
@@ -94,7 +93,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
               {otpSent ? "OTP Sent" : "Send OTP"}
             </button>
           </div>
-        )}
+      
       </div>
     </div>
   );

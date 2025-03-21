@@ -30,6 +30,38 @@ import market from "@/assets/Team/market.webp";
 import customerS from "@/assets/Team/customerS.webp";
 import logistic from "@/assets/Team/logistic.webp";
 
+import delhi from "@/assets/Tourism/Domestic/delhi.webp"
+import rajasthan from "@/assets/Tourism/Domestic/rajasthan.webp"
+import goa from "@/assets/Tourism/Domestic/Goa.webp"
+import himachal from "@/assets/Tourism/Domestic/Himachal.webp"
+import mumbai from "@/assets/Tourism/Domestic/maharastra.webp"
+import odisha from "@/assets/Tourism/Domestic/Odisha.webp"  
+import karnataka from "@/assets/Tourism/Domestic/Karnatka.webp"
+import tamilnadu from "@/assets/Tourism/Domestic/tamilnadu.webp"
+import leh from "@/assets/Tourism/Domestic/Leh.webp"
+import up from "@/assets/Tourism/Domestic/up.webp"
+import kashmir from "@/assets/Tourism/Domestic/kashmir.webp"
+import punjab from "@/assets/Tourism/Domestic/punjab.webp"
+import mp from "@/assets/Tourism/Domestic/mp.webp"
+
+import asia from "@/assets/Tourism/Continent/asia.webp"
+import africa from "@/assets/Tourism/Continent/africa.webp"
+import europe from "@/assets/Tourism/Continent/europe.webp"
+import northAmerica from "@/assets/Tourism/Continent/northamerica.webp"
+import southAmerica from "@/assets/Tourism/Continent/southamerica.webp"
+import australia from "@/assets/Tourism/Continent/australia.webp"
+
+import tokyo from "@/assets/Tourism/International/tokyo.webp"
+import sydney from "@/assets/Tourism/International/sydney.webp"
+import paris from "@/assets/Tourism/International/paris.webp"
+import london from "@/assets/Tourism/International/london.webp"
+import dubai from "@/assets/Tourism/International/dubai.webp"
+import lima from "@/assets/Tourism/International/lima.webp"
+import moscow from "@/assets/Tourism/International/moscow.webp"
+import beijing from "@/assets/Tourism/International/bejieng.webp"
+import giza from "@/assets/Tourism/International/giza.webp"
+
+
 import Man from "@/assets/man.webp"
 
 export const indianDestination = [
@@ -595,4 +627,286 @@ export const teamMembers = [
   { id: 4, name: "Rohit Kapoor", role: "Marketing Director", image: market, description: "Rohit Kapoor drives Bazario's marketing initiatives." },
   { id: 5, name: "Mahima Jain", role: "Customer Support Manager", image: customerS, description: "Mahima Jain manages customer support operations." },
   { id: 6, name: "Manoj Sharma", role: "Logistic Manager", image: logistic, description: "Manoj Sharma oversees logistics and distribution." }
+]
+
+export const indianTours = [
+  {
+    id: 1,
+    image: delhi,
+    name: "Delhi",
+    country: "India",
+    price: "₹ 3k/night",
+    transportPrice: "₹ 2k",
+  },
+  {
+    id: 2,
+    image: rajasthan,
+    name: "Rajasthan",
+    country: "India",
+    transportPrice: "₹ 2k",
+    price: "₹ 3k/night",
+  },
+  {
+    id: 3,
+    image: goa,
+    name: "Goa",
+    country: "India",
+    transportPrice: "₹ 2k",
+    price: "₹ 3k/night",
+  },
+  {
+    id: 4,
+    image: himachal,
+    name: "Himachal Pradesh",
+    country: "India",
+    transportPrice: "₹ 2k",
+    price: "₹ 3k/night",
+  },
+  {
+    id: 5,
+    image: mumbai,
+    name: "Maharashtra",
+    country: "India", 
+    transportPrice: "₹ 2k",
+    price: "₹ 3k/night",
+  },
+  {
+    id: 6,
+    image: odisha,
+    name: "Odisha",
+    country: "India",
+    transportPrice: "₹ 2k",
+    price: "₹ 3k/night",
+  },
+  {
+    id: 7,
+    image: karnataka,
+    name: "Karnataka",
+    country: "India",
+    transportPrice: "₹ 2k",
+    price: "₹ 3k/night",
+  },
+  {
+    id: 8,
+    image: tamilnadu,
+    name: "Tamil Nadu",
+    country: "India",
+    transportPrice: "₹ 2k",
+    price: "₹ 3k/night",
+  },
+  {
+    id: 9,
+    image: leh,
+    name: "Leh",
+    country: "India",
+    transportPrice: "₹ 2k",
+    price: "₹ 3k/night",
+  },
+  {
+    id: 10,
+    image: up,
+    name: "Uttar Pradesh",
+    country: "India",
+    transportPrice: "₹ 2k",
+    price: "₹ 3k/night",
+  },
+  {
+    id: 11,
+    image: kashmir,
+    name: "Kashmir",
+    transportPrice: "₹ 2k",
+    country: "India",
+    price: "₹ 3k/night",
+  },
+  {
+    id: 12,
+    image: punjab,
+    name: "Punjab",
+    transportPrice: "₹ 2k",
+    country: "India",
+    price: "₹ 3k/night",
+  },
+  {
+    id: 13,
+    image: mp,
+    name: "Madhya Pradesh",
+    country: "India",
+    transportPrice: "₹ 2k",
+    price: "₹ 3k/night",
+  },
+]
+
+export const continentTours = [
+  {
+    id: 1,
+    image: asia,
+    name: "Asia",
+    transportPrice: "₹ 2k",
+    price: "₹ 3k/night",
+  },
+  {
+    id: 2,
+    image: europe,
+    name: "Europe",
+    transportPrice: "₹ 2k",
+    price: "₹ 3k/night",
+  },
+  {
+    id: 3,
+    image: africa,
+    name: "Africa",
+    transportPrice: "₹ 2k",
+    price: "₹ 3k/night",
+  },
+  {
+    id: 4,
+    image: northAmerica,
+    name: "North America",
+    transportPrice: "₹ 2k",
+    price: "₹ 3k/night",  
+  },
+  {
+    id: 5,
+    image: southAmerica,
+    name: "South America",
+    transportPrice: "₹ 2k",
+    price: "₹ 3k/night",
+  },
+  {
+    id: 6,
+    image: australia,
+    name: "Australia",
+    transportPrice: "₹ 2k",
+    price: "₹ 3k/night",
+  },
+]
+
+export const internationalTours = [
+  {
+    id: 1,
+    image: dubai,
+    name: "Dubai",
+    country: "UAE",
+    transportPrice: "₹ 2k",
+    price: "₹ 3k/night",
+  },
+  {
+    id: 2,
+    image: Singapore,
+    name: "Singapore",
+    country: "Singapore",
+    transportPrice: "₹ 2k",
+    price: "₹ 3k/night",
+  },
+  {
+    id: 3,
+    image: sydney,
+    name: "Sydney",
+    country: "Australia",
+    transportPrice: "₹ 2k",
+    price: "₹ 3k/night",
+  },
+  {
+    id: 4,
+    image: dubai,
+    name: "Dubai",    
+    country: "UAE",
+    transportPrice: "₹ 2k",
+    price: "₹ 3k/night",
+  },
+  { 
+    id: 5,
+    image: paris,
+    name: "Paris",
+    country: "France",
+    transportPrice: "₹ 2k",
+    price: "₹ 3k/night",
+  },
+  {
+    id: 6,
+    image: NewYork,
+    name: "New York",
+    country: "USA",
+    transportPrice: "₹ 2k",
+    price: "₹ 3k/night",
+  },  
+  {
+    id: 7,
+    image: london,
+    name: "London",
+    country: "UK",
+    transportPrice: "₹ 2k",
+    price : "₹ 3k/night",
+  },
+  {
+    id: 8,
+    image: tokyo,
+    name: "Tokyo",
+    country: "Japan",
+    transportPrice: "₹ 2k",
+    price : "₹ 3k/night",
+  },
+  {
+    id: 9,
+    image: Bali,
+    name: "Bali",
+    country: "Indonesia",
+    transportPrice: "₹ 2k",
+    price : "₹ 3k/night",
+  },
+  {
+    id: 10,
+    image: sydney,
+    name: "Sydney",
+    country: "Australia",
+    transportPrice: "₹ 2k",
+    price : "₹ 3k/night",
+  },
+  {
+    id: 11,
+    image: Switzerland,
+    name: "Zurich",
+    country: "Switzerland",
+    transportPrice: "₹ 2k",
+    price : "₹ 3k/night",
+  },
+  {
+    id: 12,
+    image: Maldives,
+    name: "Maldives",
+    transportPrice: "₹ 2k",
+    price : "₹ 3k/night",
+  },
+  {
+    id: 13,
+    image: lima,
+    name: "Lima",
+    country: "Peru",
+    transportPrice: "₹ 2k",
+    price : "₹ 3k/night",
+  },
+  {
+    id: 14,
+    image: moscow,
+    name: "Moscow",
+    country: "Russia",
+    transportPrice: "₹ 2k",
+    price : "₹ 3k/night",
+  },
+  {
+    id: 15,
+    image: beijing,
+    name: "Beijing",
+    country: "China",
+    transportPrice: "₹ 2k",
+    price : "₹ 3k/night",
+  },
+  {
+    id: 16,
+    image: giza,
+    name: "Giza",
+    country: "Egypt",
+    transportPrice: "₹ 2k",
+    price : "₹ 3k/night",
+  },
 ]

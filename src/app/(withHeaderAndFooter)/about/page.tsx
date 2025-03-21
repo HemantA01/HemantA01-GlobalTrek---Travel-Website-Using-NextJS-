@@ -71,10 +71,10 @@ export default function Page() {
             className="text-4xl md:text-[6rem] font-bold mb-4"
             style={{ fontFamily: "var(--font-dancing-script)" }}
           >
-            About GlobalTrek
+            About GlobeTrek
           </h1>
           <p className="text-lg md:text-xl max-w-2xl text-blue-100 text-center">
-            At GlobalTrek, we strive to provide the best travel experiences with
+            At GlobeTrek, we strive to provide the best travel experiences with
             sustainability and customer satisfaction at our core.
           </p>
         </div>
@@ -101,7 +101,7 @@ export default function Page() {
             <p className="text-jutify">
               <strong>Established in 2025: Your Partner in Exploration</strong>
               <br />
-              GlobalTrek is a premier travel company committed to creating
+              GlobeTrek is a premier travel company committed to creating
               unforgettable journeys for adventurers across the globe. With a
               strong emphasis on sustainability, we ensure that our expeditions
               not only enrich the lives of our travelers but also leave a
@@ -110,7 +110,7 @@ export default function Page() {
             <p className="mt-2 text-jutify">
               <strong>Turning Challenges into Opportunities</strong>
               <br />
-              At GlobalTrek, we embrace challenges as opportunities to innovate
+              At GlobeTrek, we embrace challenges as opportunities to innovate
               and grow. By collaborating closely with our partners, suppliers,
               and local communities, we strive to minimize any adverse effects
               of our operations. Our dedication to sustainable practices drives
@@ -178,7 +178,7 @@ export default function Page() {
                 className="text-4xl md:text-5xl font-bold text-gray-800"
                 style={{ fontFamily: "var(--font-dancing-script)" }}
               >
-                Why Choose GlobalTrek?
+                Why Choose GlobeTrek?
               </h3>
               <div className="h-1 w-16 bg-amber-400 rounded-full ml-6"></div>
             </div>
@@ -383,7 +383,7 @@ export default function Page() {
             className="text-4xl md:text-5xl font-bold text-gray-800 mb-4"
             style={{ fontFamily: "var(--font-dancing-script)" }}
           >
-            Life at GlobalTrek
+            Life at GlobeTrek
           </h3>
           <div className="h-1 w-16 bg-amber-400 rounded-full ml-6"></div>
         </div>
