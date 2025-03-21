@@ -29,7 +29,6 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeTab, setActiveTab] = useState(type || "Flights");
 
-  const [isOpenSlider, setIsOpenSlider] = useState(false);
 
   // Handle scrolling effect
   useEffect(() => {
@@ -49,13 +48,11 @@ export default function Header() {
     setIsOpen(!isOpen);
   };
 
-  const toggleSlider = () => {
-    setIsOpenSlider(!isOpenSlider);
-  };
+  const [isOpenSlider, setIsOpenSlider] = useState<"signin" | "signup" | null>(null);
 
-  const closeSlider = () => {
-    setIsOpenSlider(false);
-  };
+  const openSignin = () => setIsOpenSlider("signin");
+  const openSignup = () => setIsOpenSlider("signup");
+  const closeSlider = () => setIsOpenSlider(null); // Close instead of redirecting
 
   const tab = [
     { id: "Flights", label: "Flights", icon: <SlPlane size={20} /> },
@@ -185,7 +182,7 @@ export default function Header() {
             <button
               role="button"
               className="group relative inline-flex items-center justify-center text-sm rounded-full bg-gray-900 px-6 py-2 font-medium text-white transition-all duration-200 hover:bg-gray-800 hover:-translate-y-0.5"
-              onClick={toggleSlider}
+              onClick={openSignin}
             >
               Login
               <svg
@@ -301,7 +298,7 @@ export default function Header() {
                 className="flex items-center gap-2 bg-white text-gray-900 px-8 py-3 rounded-full font-medium"
                 onClick={() => {
                   toggleMenu();
-                  toggleSlider();
+                  openSignin();
                 }}
               >
                 <FiUser size={20} />
@@ -313,7 +310,7 @@ export default function Header() {
       </div>
 
       {/* Login Slider - Now properly implemented */}
-      <Signin isOpen={isOpenSlider} onClose={closeSlider} />
+      <Signin isOpen={isOpenSlider === "signin"} onClose={closeSlider} openSignup={openSignup} isOpenSlider={isOpenSlider} />
     </header>
   );
 }

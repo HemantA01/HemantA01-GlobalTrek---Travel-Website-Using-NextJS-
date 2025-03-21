@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import MuiPhone from "@/app/_components/phoneInput";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import Signup from "@/app/_components/Signup";
 
@@ -12,7 +13,8 @@ import Logo from "@/assets/gt-logo-light.webp";
 import { SiMaildotru } from "react-icons/si";
 import { HiOutlineLockClosed } from "react-icons/hi";
 
-const Signin = ({ isOpen, onClose }: any) => {
+const Signin = ({ isOpen, onClose, openSignup, isOpenSlider }: any) => {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState("phone");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,7 +32,6 @@ const Signin = ({ isOpen, onClose }: any) => {
     }
   };
 
-  const [isOpenSlider, setIsOpenSlider] = useState(false);
 
   const handleSendOtp = () => {
     if (phone.length >= 10) {
@@ -50,14 +51,6 @@ const Signin = ({ isOpen, onClose }: any) => {
       document.body.style.overflow = "auto";
     };
   }, [isOpen]);
-
-  const toggleSlider = () => {
-    setIsOpenSlider(!isOpenSlider);
-  };
-
-  const closeSlider = () => {
-    setIsOpenSlider(false);
-  };
 
   return (
     <>
@@ -98,7 +91,7 @@ const Signin = ({ isOpen, onClose }: any) => {
                 <span className="px-2 bg-white text-gray-500 font-medium">
                   Don't have an account?{" "}
                   <button
-                    onClick={toggleSlider}
+                    onClick={openSignup}
                     className="font-medium text-indigo-600 hover:text-indigo-500"
                   >
                     Sign Up
@@ -321,7 +314,7 @@ const Signin = ({ isOpen, onClose }: any) => {
       </div>
       </div>
 
-            <Signup isOpen={isOpenSlider} onClose={closeSlider} />
+            <Signup isOpen={isOpenSlider === "signup"} onClose={onClose} />
     </>
   );
 };

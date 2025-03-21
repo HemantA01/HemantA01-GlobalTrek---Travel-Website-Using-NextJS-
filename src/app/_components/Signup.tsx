@@ -110,7 +110,7 @@ const Signup = ({ isOpen, onClose }: any) => {
     <>
      {isOpen && (
         <div
-          className="fixed inset-0 bg-black opacity-0 z-40 transition-opacity"
+          className="fixed inset-0 bg-black opacity-70 z-40 transition-opacity"
           onClick={onClose}
         ></div>
       )}
