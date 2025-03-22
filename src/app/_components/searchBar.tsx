@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 import Image from "next/image";
 import { motion, AnimatePresence, useInView } from "motion/react";
@@ -21,6 +22,7 @@ import { TiArrowRepeat } from "react-icons/ti";
 import toast from "react-hot-toast";
 
 export default function SearchBar() {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const type = searchParams.get("type");
   const [activeTab, setActiveTab] = useState(type || "Flights");
@@ -98,20 +100,19 @@ export default function SearchBar() {
   }, []);
 
   const handleSearch = () => {
-    console.log("Searching for:", {
-      fromDestination,
-      toDestination,
-      destination,
-      infants,
-      cabinClass,
-      departureDate,
-      returnDate,
-      startDate,
-      endDate,
-      adults,
-      children,
-      rooms,
-    });
+    if (activeTab === "Flights") {}
+
+    if (activeTab === "Hotels") {
+      router.push("/hotels");
+    }
+
+    if (activeTab === "HomeStays") {}
+
+    if (activeTab === "Cruises") {}
+
+    if (activeTab === "Buses") {}
+
+    if (activeTab === "Trains") {}
   };
 
   const handleAdults = (action: string) => {
