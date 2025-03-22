@@ -23,7 +23,7 @@ interface FormData {
   agreeToTerms: boolean;
 }
 
-const Signup = ({ isOpen, onClose }: any) => {
+const Signup = ({ isOpen, onClose, openSignin }: any) => {
   const navigate = useRouter();
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
@@ -141,12 +141,12 @@ const Signup = ({ isOpen, onClose }: any) => {
             <div className="relative flex justify-center text-sm">
               <span className="px-2 bg-white text-gray-500 font-medium">
                 Already have an account?{" "}
-                <Link
-                  href="/signin"
+                <button
+                  onClick={openSignin}
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
                   Sign In
-                </Link>
+                </button>
               </span>
             </div>
           </div>

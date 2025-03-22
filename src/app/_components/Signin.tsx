@@ -13,7 +13,7 @@ import Logo from "@/assets/gt-logo-light.webp";
 import { SiMaildotru } from "react-icons/si";
 import { HiOutlineLockClosed } from "react-icons/hi";
 
-const Signin = ({ isOpen, onClose, openSignup, isOpenSlider }: any) => {
+const Signin = ({ isOpen, onClose, openSignup, isOpenSlider, openSignin }: any) => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("phone");
   const [email, setEmail] = useState("");
@@ -314,7 +314,7 @@ const Signin = ({ isOpen, onClose, openSignup, isOpenSlider }: any) => {
       </div>
       </div>
 
-            <Signup isOpen={isOpenSlider === "signup"} onClose={onClose} />
+            <Signup isOpen={isOpenSlider === "signup"} onClose={onClose} openSignin={openSignin} />
     </>
   );
 };

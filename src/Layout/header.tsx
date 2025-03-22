@@ -310,7 +310,7 @@ export default function Header() {
       </div>
 
       {/* Login Slider - Now properly implemented */}
-      <Signin isOpen={isOpenSlider === "signin"} onClose={closeSlider} openSignup={openSignup} isOpenSlider={isOpenSlider} />
+      <Signin isOpen={isOpenSlider === "signin"} onClose={closeSlider} openSignup={openSignup} isOpenSlider={isOpenSlider} openSignin={openSignin} />
     </header>
   );
 }
