@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -8,14 +9,15 @@ import {
   WifiIcon,
   TvIcon,
   UtensilsIcon,
-  BedDouble
+  BedDouble,
 } from "lucide-react";
 import { TbHours24 } from "react-icons/tb";
 import img1 from "@/assets/Hotels/img-1.webp";
 import img2 from "@/assets/Hotels/img-2.webp";
 import img3 from "@/assets/Hotels/img-3.webp";
 
-export default function HotelCard() {
+export default function HotelCard({ id }: { id: string }) {
+  const navigate = useRouter();
   const [currentImage, setCurrentImage] = useState(0);
   const images = [img1, img2, img3];
 
@@ -34,19 +36,19 @@ export default function HotelCard() {
           <Image
             src={images[currentImage]}
             alt={`Hotel view ${currentImage + 1}`}
-            className="w-full h-full object-cover rounded-tl-lg"
+            className="w-full h-full object-cover rounded-t-lg"
           />
 
           <div className="absolute inset-0 flex items-center justify-between px-3">
             <button
               onClick={prevImage}
-              className="bg-white/80 hover:bg-white rounded-full p-1 text-gray-800"
+              className="bg-white/80 hover:bg-white rounded-full p-1 text-gray-800 cursor-pointer"
             >
               <ChevronLeftIcon size={20} />
             </button>
             <button
               onClick={nextImage}
-              className="bg-white/80 hover:bg-white rounded-full p-1 text-gray-800"
+              className="bg-white/80 hover:bg-white rounded-full p-1 text-gray-800 cursor-pointer"
             >
               <ChevronRightIcon size={20} />
             </button>
@@ -142,7 +144,10 @@ export default function HotelCard() {
           </div>
         </div>
 
-        <button className="w-full border-2 border-[#D5C7A3] hover:bg-[#D5C7A3] text-[#D5C7A3] hover:text-white font-medium py-2 px-4 rounded-md transition-colors duration-300 ease-in-out cursor-pointer">
+        <button
+          onClick={() => navigate.push(`/hotels/${id}`)}
+          className="w-full border-2 border-[#D5C7A3] hover:bg-[#D5C7A3] text-[#D5C7A3] hover:text-white font-medium py-2 px-4 rounded-md transition-colors duration-300 ease-in-out cursor-pointer"
+        >
           Book Now
         </button>
       </div>

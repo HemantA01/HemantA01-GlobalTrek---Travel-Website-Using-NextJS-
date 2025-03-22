@@ -6,9 +6,11 @@ import Image from "next/image";
 
 import HotelCard from "@/app/_components/hotelcard";
 import HotelBanner from "@/assets/gt-hotelbanner.webp";
+import { toast } from "react-hot-toast";
 
 import { GoPeople } from "react-icons/go";
-import { FiEdit } from "react-icons/fi";
+import { IoIosSearch } from "react-icons/io";
+import { HiMinusSmall, HiPlusSmall } from "react-icons/hi2";
 
 export default function Page() {
   const [budgetRange, setBudgetRange] = useState([0, 100]);
@@ -17,11 +19,17 @@ export default function Page() {
   const [userRating, setUserRating] = useState<string[]>([]);
   const [selectedAmenities, setSelectedAmenities] = useState<string[]>([]);
   const [propertyTypes, setPropertyTypes] = useState<string[]>([]);
-  const [selectedNeighborhoods, setSelectedNeighborhoods] = useState<string[]>(
-    []
-  );
+  const [selectedNeighborhoods, setSelectedNeighborhoods] = useState<string[]>([]);
   const [neighborhoodSearch, setNeighborhoodSearch] = useState("");
   const [distanceFromCenter, setDistanceFromCenter] = useState(15);
+  const [isGuestsOpen, setIsGuestsOpen] = useState(false);
+  const [destination, setDestination] = useState("Delhi, India");
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const [adults, setAdults] = useState(1);
+  const [children, setChildren] = useState(0);
+  const [rooms, setRooms] = useState(1);
+  const [isMoreThan9, setIsMoreThan9] = useState(false);
 
   const handleBudgetChange = (e: any) => {
     const value = parseInt(e.target.value);
@@ -140,6 +148,63 @@ export default function Page() {
     // You would typically call a parent function here or update a global state
   };
 
+  const handleAdults = (action: string) => {
+    if (action === "increment") {
+      if (adults < 9) {
+        setAdults(adults + 1);
+      } else {
+        toast.error("Adults can't be more than 9");
+      }
+    } else if (action === "decrement" && adults > 1) {
+      setAdults(adults - 1);
+    }
+
+    checkTotalTravelers(
+      action === "increment" ? adults + 1 : adults - 1,
+      children,
+      0
+    );
+  };
+
+  const handleChildren = (action: string) => {
+    if (action === "increment") {
+      if (children < 8) {
+        setChildren(children + 1);
+      } else {
+        toast.error("Children can't be more than 8");
+      }
+    } else if (action === "decrement" && children > 0) {
+      setChildren(children - 1);
+    }
+
+    checkTotalTravelers(
+      adults,
+      action === "increment" ? children + 1 : children - 1,
+      0
+    );
+  };
+
+  const handleRooms = (action: string) => {
+    if (action === "increment") {
+      if (rooms < 9) {
+        setRooms(rooms + 1);
+      } else {
+        toast.error("Rooms can't be more than 9");
+      }
+    } else if (action === "decrement" && rooms > 1) {
+      setRooms(rooms - 1);
+    }
+  };
+
+  const checkTotalTravelers = (a: number, c: number, i: number) => {
+    const total = a + c + i;
+    setIsMoreThan9(total > 9);
+  };
+
+  const handleDone = () => {
+    setIsGuestsOpen(false);
+  };
+
   return (
     <>
       <div className="relative w-full h-[40vh]">
@@ -187,9 +252,18 @@ export default function Page() {
                   City, State, Country or Hotel Name
                 </label>
                 <div className="flex items-center">
-                  <h2 className="text-gray-800 font-medium text-[1rem]">
-                    New Delhi, India
-                  </h2>
+                  <input
+                    type="text"
+                    value={destination}
+                    onChange={(e) => setDestination(e.target.value)}
+                    placeholder="Where are you going?"
+                    className="w-full bg-transparent text-gray-800 placeholder-gray-800/60 text-[1rem] font-medium border-none focus:ring-0 p-0 focus:outline-none"
+                  />
+                  <IoIosSearch
+                    className="text-gray-900 ml-2"
+                    size={20}
+                    strokeWidth={2}
+                  />
                 </div>
               </div>
             </div>
@@ -200,9 +274,12 @@ export default function Page() {
                   Check-in Date
                 </label>
                 <div className="flex items-center">
-                  <h2 className="text-gray-800 font-medium text-[1rem]">
-                    21 March 2025
-                  </h2>
+                  <input
+                    type="date"
+                    value={startDate.toISOString().split("T")[0]}
+                    onChange={(e) => setStartDate(new Date(e.target.value))}
+                    className="w-full bg-transparent text-gray-800 placeholder-gray-800/60 text-[1rem] font-medium border-none focus:ring-0 p-0 focus:outline-none"
+                  />
                 </div>
               </div>
 
@@ -211,33 +288,158 @@ export default function Page() {
                   Check-Out Date
                 </label>
                 <div className="flex items-center">
-                  <h2 className="text-gray-800 font-medium text-[1rem]">
-                    21 March 2025
-                  </h2>
+                  <input
+                    type="date"
+                    value={endDate.toISOString().split("T")[0]}
+                    onChange={(e) => {
+                      if (
+                        e.target.value > startDate.toISOString().split("T")[0]
+                      ) {
+                        setEndDate(new Date(e.target.value));
+                      }
+                    }}
+                    className="w-full bg-transparent text-gray-800 placeholder-gray-800/60 text-[1rem] font-medium border-none focus:ring-0 p-0 focus:outline-none"
+                  />
                 </div>
               </div>
             </div>
 
             <div className="relative flex-1">
-              <div className="bg-white/20 backdrop-blur rounded-xl p-3 border border-gray-200 transition cursor-pointer guests-select">
+              <div className="bg-white/20 backdrop-blur rounded-xl p-3 border border-gray-200 transition cursor-pointer guests-select" onClick={() => setIsGuestsOpen(!isGuestsOpen)}>
                 <label className="block text-xs font-bold text-gray-800/80 mb-1">
                   Rooms & Guests
                 </label>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-800 font-medium text-[1rem]">
-                    1 Room, 2 Guests
+                    {`${adults} adult${adults > 1 ? "s" : ""}, ${rooms} room${
+                      rooms > 1 ? "s" : ""
+                    }`}
+                    {children > 0
+                      ? `, ${children} child${children > 1 ? "ren" : ""}`
+                      : ""}
                   </span>
                   <GoPeople size={20} />
                 </div>
               </div>
+              {isGuestsOpen && (
+                <div className="absolute top-full left-0 w-116 mt-2 bg-white border border-gray-300 rounded-md shadow-md z-50">
+                  <div className="p-4">
+                    <div className="mb-4">
+                      <div className="flex justify-between items-center mb-1">
+                        <div>
+                          <strong>Rooms</strong>
+                          <div className="text-xs text-gray-500">(max 9)</div>
+                        </div>
+                        <div className="flex items-center border border-gray-300 rounded-md">
+                          <button
+                            onClick={() => handleRooms("decrement")}
+                            disabled={rooms <= 1}
+                            className={`w-10 h-8 flex items-center justify-center border-r border-gray-300  ${
+                              rooms <= 1
+                                ? "opacity-50 cursor-not-allowed"
+                                : "hover:bg-gray-100"
+                            }`}
+                          >
+                            <HiMinusSmall size={20} />
+                          </button>
+                          <span className="w-12 h-8 text-center font-semibold bg-gray-100 pt-1">
+                            {rooms}
+                          </span>
+                          <button
+                            onClick={() => handleRooms("increment")}
+                            className="w-10 h-8 flex items-center justify-center border-l border-gray-300  "
+                          >
+                            <HiPlusSmall size={20} />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Adults selection */}
+                    <div className="mb-4">
+                      <div className="flex justify-between items-center mb-1">
+                        <div>
+                          <strong>Adults</strong>
+                          <div className="text-xs text-gray-500">
+                            (18 Years or Above)
+                          </div>
+                        </div>
+                        <div className="flex items-center border border-gray-300 rounded-md">
+                          <button
+                            onClick={() => handleAdults("decrement")}
+                            disabled={adults <= 1}
+                            className={`w-10 h-8 flex items-center justify-center border-r border-gray-300  ${
+                              adults <= 1
+                                ? "opacity-50 cursor-not-allowed"
+                                : "hover:bg-gray-100"
+                            }`}
+                          >
+                            <HiMinusSmall size={20} />
+                          </button>
+                          <span className="w-12 h-8 text-center font-semibold bg-gray-100 pt-1">
+                            {adults}
+                          </span>
+                          <button
+                            onClick={() => handleAdults("increment")}
+                            className="w-10 h-8 flex items-center justify-center border-l border-gray-300  "
+                          >
+                            <HiPlusSmall size={20} />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Children selection */}
+                    <div className="mb-4">
+                      <div className="flex justify-between items-center mb-1">
+                        <div>
+                          <strong>Children</strong>
+                          <div className="text-xs text-gray-500">
+                            (Below 18 Years)
+                          </div>
+                        </div>
+                        <div className="flex items-center border border-gray-300 rounded-md">
+                          <button
+                            onClick={() => handleChildren("decrement")}
+                            disabled={children <= 0}
+                            className={`w-10 h-8 flex items-center justify-center border-r border-gray-300  ${
+                              children <= 0
+                                ? "opacity-50 cursor-not-allowed"
+                                : "hover:bg-gray-100"
+                            }`}
+                          >
+                            <HiMinusSmall size={20} />
+                          </button>
+                          <span className="w-12 h-8 text-center font-semibold bg-gray-100 pt-1">
+                            {children}
+                          </span>
+                          <button
+                            onClick={() => handleChildren("increment")}
+                            className="w-10 h-8 flex items-center justify-center border-l border-gray-300  "
+                          >
+                            <HiPlusSmall size={20} />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={handleDone}
+                      className="w-full py-2 border border-amber-500 text-amber-500 rounded-md hover:bg-amber-600 hover:text-white transition-all duration-300"
+                    >
+                      Done
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
 
-            <div className="relative flex items-center justify-center">
+            {/* <div className="relative flex items-center justify-center">
               <button className="flex items-center justify-center gap-2 border-2 border-[#D5C7A3] hover:bg-[#D5C7A3] text-[#D5C7A3] hover:text-white font-normal text-sm py-2 px-4 w-[120px] rounded-lg transition cursor-pointer">
                 <FiEdit size={16} />
                 Edit
               </button>
-            </div>
+            </div> */}
           </div>
           <div className="flex items-start justify-between gap-6 ">
             <div className="w-[22%] border border-gray-200 shadow-[0px_0px_10px_0px_rgba(0,0,0,0.1)] p-4 flex-shrink-0">
@@ -563,7 +765,7 @@ export default function Page() {
             </div>
             <div className="grid grid-cols-1 gap-10 w-[78%] max-h-[85rem] overflow-y-auto custom-scrollbar border border-gray-200 shadow-[0px_0px_10px_0px_rgba(0,0,0,0.1)] p-4">
               {Array.from({ length: 5 }).map((_, index) => (
-                <HotelCard key={index} />
+                <HotelCard key={index} id={index.toString()} />
               ))}
             </div>
           </div>
