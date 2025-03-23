@@ -6,6 +6,8 @@ import Testimonials from "@/components/testimonial";
 import Team from "@/components/team";
 import Gallery from "@/components/gallery";
 
+import { testimonials } from "@/assets/data";
+
 import ContactBanner from "@/assets/gt-contactbanner.webp";
 import About from "@/assets/About/about.webp";
 import About2 from "@/assets/About/about2.webp";
@@ -358,7 +360,7 @@ export default function Page() {
           <div className="h-1 w-16 bg-amber-400 rounded-full ml-6"></div>
         </div>
 
-        <Testimonials />
+        <Testimonials testimonial={testimonials} />
       </div>
 
       <div className="max-w-7xl mx-auto my-16">

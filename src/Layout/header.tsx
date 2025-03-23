@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import React, { useState, useEffect, use } from "react";
+import { useSearchParams, usePathname } from "next/navigation";
 
 import Signin from "@/app/_components/Signin";
 
@@ -75,6 +75,18 @@ export default function Header() {
       icon: <LiaUmbrellaBeachSolid size={20} />,
     },
   ];
+
+  const url = usePathname();
+
+  useEffect(() => {
+    const foundTab = tab.find((item) => url.includes(item.id.toLowerCase()));
+  
+    if (foundTab) {
+      setActiveTab(foundTab.id);
+    }
+  }, [url, tab]); 
+  
+
 
   return (
     <header

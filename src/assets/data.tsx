@@ -61,8 +61,13 @@ import moscow from "@/assets/Tourism/International/moscow.webp"
 import beijing from "@/assets/Tourism/International/bejieng.webp"
 import giza from "@/assets/Tourism/International/giza.webp"
 
-
+import img1 from "@/assets/Hotels/img-1.webp"
 import Man from "@/assets/man.webp"
+
+import { Wifi, ShowerHead, Tv, Toilet, Utensils, Home, Droplet, BatteryCharging, BedDouble, Car, Key, Thermometer, ParkingCircle, Snowflake, Rss, Briefcase, ShieldCheck, Dumbbell } from "lucide-react";
+import { FaToiletPaper, FaWater, FaSwimmer, FaConciergeBell, FaHotTub, FaCoffee, FaUtensils, FaSpa, FaBicycle, FaSmokingBan, FaBusAlt, FaLuggageCart, FaBaby, FaCarAlt, FaPhone, FaRegLightbulb } from "react-icons/fa";
+import { MdOutlineDryCleaning, MdLocalLaundryService, MdOutlineIron, MdOutlineRoomService, MdOutlineFitnessCenter, MdOutlineSportsBasketball } from "react-icons/md";
+import { AiOutlineSafetyCertificate } from "react-icons/ai";
 
 export const indianDestination = [
   {
@@ -909,4 +914,123 @@ export const internationalTours = [
     transportPrice: "₹ 2k",
     price : "₹ 3k/night",
   },
+]
+
+export const roomTypes = [
+  {
+    id: 1,
+    name: "Day Use Room",
+    subTitle: "(Check in 9am - Check Out 5pm)",
+    description: "8 Hours stay between 09:00 to 17:00",
+    image: img1,
+    price: 1486,
+    originalPrice: 2111,
+    discount: "₹625 Off",
+    tax: 203,
+    amenities: ["Room only", "Free Wi-Fi"],
+    details: ["King bed or Twin Bed(S)", "245 Sq Ft.", "23 Sq.mt."],
+    refundable: false,
+    couponApplied: "EMTSTAY",
+    roomsLeft: 2
+  },
+  {
+    id: 2,
+    name: "Value Twin Room",
+    subTitle: "1 bunk bed • City view",
+    description: "Sleeps 2 • 11 sq. mt.",
+    image: img1,
+    price: 3040,
+    originalPrice: 4244,
+    discount: "28% off",
+    tax: 394,
+    amenities: ["Free WiFi", "Drinking water", "Extra toilet", "Hair dryer", "Toiletries", "Towels", "Walk-in shower", "Wi-Fi", "Satellite channels"],
+    refundable: false,
+    roomsLeft: 1
+  },
+  {
+    id: 3,
+    name: "Room With Breakfast",
+    subTitle: "City view • Breakfast included",
+    description: "Sleeps 2 • 14 sq. mt.",
+    image: img1,
+    price: 3596,
+    originalPrice: 5044,
+    discount: "28% off",
+    tax: 466,
+    amenities: ["Breakfast", "Free WiFi", "Drinking water", "Extra toilet", "Hair dryer", "Toiletries"],
+    refundable: false,
+    roomsLeft: 1
+  }
+];
+
+export const amenities = [
+  { name: "Free WiFi", icon: <Wifi size={18} /> },
+  { name: "Drinking water", icon: <FaWater size={18} /> },
+  { name: "Extra toilet", icon: <Toilet size={18} /> },
+  { name: "Hair dryer", icon: <MdOutlineDryCleaning size={18} /> },
+  { name: "Toiletries", icon: <FaToiletPaper size={18} /> },
+  { name: "Towels", icon: <FaSwimmer size={18} /> },
+  { name: "Walk-in shower", icon: <ShowerHead size={18} /> },
+  { name: "Satellite TV", icon: <Tv size={18} /> },
+  { name: "Room only", icon: <Home size={18} /> },
+  { name: "Breakfast included", icon: <FaUtensils size={18} /> },
+  { name: "Laundry service", icon: <MdLocalLaundryService size={18} /> },
+  { name: "Ironing facilities", icon: <MdOutlineIron size={18} /> },
+  { name: "Swimming pool", icon: <FaSwimmer size={18} /> },
+  { name: "Spa & wellness", icon: <FaSpa size={18} /> },
+  { name: "Concierge service", icon: <FaConciergeBell size={18} /> },
+  { name: "Hot tub", icon: <FaHotTub size={18} /> },
+  { name: "Coffee machine", icon: <FaCoffee size={18} /> },
+  { name: "Air conditioning", icon: <BatteryCharging size={18} /> },
+  { name: "Heating", icon: <Thermometer size={18} /> },
+  { name: "Double bed", icon: <BedDouble size={18} /> },
+  { name: "Parking available", icon: <ParkingCircle size={18} /> },
+  { name: "Electric vehicle charging", icon: <FaCarAlt size={18} /> },
+  { name: "Gym / Fitness center", icon: <MdOutlineFitnessCenter size={18} /> },
+  { name: "Bicycle rental", icon: <FaBicycle size={18} /> },
+  { name: "Smoke-free property", icon: <FaSmokingBan size={18} /> },
+  { name: "Business center", icon: <Briefcase size={18} /> },
+  { name: "24-hour front desk", icon: <FaPhone size={18} /> },
+  { name: "Luggage storage", icon: <FaLuggageCart size={18} /> },
+  { name: "Baby cot available", icon: <FaBaby size={18} /> },
+  { name: "Car rental service", icon: <Car size={18} /> },
+  { name: "Public transportation nearby", icon: <FaBusAlt size={18} /> },
+  { name: "Secure keycard access", icon: <Key size={18} /> },
+  { name: "Security & surveillance", icon: <ShieldCheck size={18} /> },
+  { name: "Backup power supply", icon: <FaRegLightbulb size={18} /> },
+  { name: "Room service", icon: <MdOutlineRoomService size={18} /> },
+  { name: "Snow sports access", icon: <Snowflake size={18} /> },
+  { name: "High-speed internet", icon: <Rss size={18} /> },
+  { name: "Basketball court", icon: <MdOutlineSportsBasketball size={18} /> },
+  { name: "Certified hygiene & safety", icon: <AiOutlineSafetyCertificate size={18} /> },
+  { name: "Dumbbells & Weights", icon: <Dumbbell size={18} /> },
+];
+
+export const reviews = [
+  {
+    name: "John Doe",
+    
+    rating: 5,
+    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.",
+    date: "2023-06-01",
+  },
+  {
+    name: "Jane Smith",
+    rating: 4,
+    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.",
+    date: "2023-06-02",
+  },
+  {
+    name: "Bob Johnson",
+    rating: 3,
+    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.",
+    date: "2023-06-03",
+  },
+  {
+    name: "Alice Brown",
+    rating: 4,
+    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.",
+    date: "2023-06-04",
+  },
+  
 ]

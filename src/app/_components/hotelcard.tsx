@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import {
@@ -19,6 +19,7 @@ import img3 from "@/assets/Hotels/img-3.webp";
 export default function HotelCard({ id }: { id: string }) {
   const navigate = useRouter();
   const [currentImage, setCurrentImage] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
   const images = [img1, img2, img3];
 
   const nextImage = () => {
@@ -29,8 +30,20 @@ export default function HotelCard({ id }: { id: string }) {
     setCurrentImage((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (isHovered) {
+      interval = setInterval(nextImage, 2000);
+    }
+    return () => clearInterval(interval);
+  }, [isHovered]);
+
   return (
-    <div className="flex flex-col md:flex-row w-full bg-white rounded-lg overflow-hidden transition-all duration-300 ease-in-out border-b border-gray-200">
+    <div 
+    onMouseEnter={() => setIsHovered(true)}
+    onMouseLeave={() => setIsHovered(false)}
+    className="flex flex-col md:flex-row w-full bg-white rounded-lg overflow-hidden transition-all duration-300 ease-in-out border-b border-gray-200 cursor-pointer" 
+    >
       <div className="relative w-full md:w-2/5">
         <div className="h-64 md:h-auto relative">
           <Image

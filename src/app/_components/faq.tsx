@@ -5,7 +5,7 @@ import { LuBadgeHelp } from "react-icons/lu";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md"
 
 const FAQ = ({ items }: {items: any}) => {
-    const [activeIndex, setActiveIndex] = useState(null);
+    const [activeIndex, setActiveIndex] = useState(0);
 
     const toggleItem = (index: any) => {
       setActiveIndex(activeIndex === index ? null : index);
