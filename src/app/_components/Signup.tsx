@@ -90,8 +90,14 @@ const Signup = ({ isOpen, onClose, openSignin }: any) => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+  
     const newErrors = validateForm();
-
+  
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+  
     const obj = {
       firstName: formData.firstName,
       lastName: formData.lastName,
@@ -100,15 +106,21 @@ const Signup = ({ isOpen, onClose, openSignin }: any) => {
       password: formData.password,
       agreeToTerms: formData.agreeToTerms,
     };
-
-    const res = await register(obj);
-
-    if (res.status === 200) {
-      toast.success(res.message, { id: "signup" });
-    } else {
-      setErrors(newErrors);
+  
+    try {
+      const res = await register(obj);
+  
+      if (res.status === 200) {
+        toast.success(res.message || "Registered successfully!", { id: "signup" });
+      } else {
+        toast.error(res.message || "Something went wrong!");
+      }
+    } catch (error: any) {
+      console.error("API error:", error.response?.data || error.message);
+      toast.error(error.response?.data?.message || "Registration failed");
     }
   };
+  
 
   const handleSendOtp = () => {
     if (formData.contact.length >= 10) {
